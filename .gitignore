@@ -1,0 +1,18 @@
+.opencode
+
+# Environment files
+.env
+.env.*
+
+# Images
+*.png
+*.jpg
+*.jpeg
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
