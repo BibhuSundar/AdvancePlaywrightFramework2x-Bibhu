@@ -12,6 +12,7 @@ A TypeScript test automation framework built on [Playwright](https://playwright.
 - **csv-parse / xlsx** - data-driven testing from CSV/Excel sources
 - **Winston** - logging
 - **Allure Playwright** - test reporting
+- **Custom TTA Reporter** - real-time HTML report with screenshots, videos, traces, and AI-powered RCA analysis
 - **dotenv** - environment configuration
 
 ## Project Structure
@@ -22,13 +23,14 @@ A TypeScript test automation framework built on [Playwright](https://playwright.
 ├── docs/                  # Documentation
 ├── rules/                 # Project/test rules and conventions
 ├── src/
+│   ├── ai/                # AI agents (RCA, Flaky Analyzer)
 │   ├── api/               # API clients / request helpers
 │   ├── config/            # Environment and framework configuration
 │   ├── fixtures/          # Custom Playwright fixtures
 │   ├── pages/             # Page Object Model classes
 │   ├── testdata/          # Static and generated test data
 │   ├── tests/             # Test specs
-│   └── utils/             # Shared utility functions
+│   └── utils/             # Shared utility functions and Custom Reporter
 ├── playwright.config.ts   # Playwright configuration
 ├── tsconfig.json          # TypeScript configuration and path aliases
 └── package.json
@@ -119,6 +121,23 @@ View the HTML report:
 npx playwright show-report
 ```
 
+View the TTA custom report (auto-generated):
+
+```bash
+open tta-report/index.html
+```
+
+## Custom TTA Reporter
+
+The framework includes a custom Playwright reporter (`src/utils/CustomReporter.ts`) that generates a real-time HTML report in the `tta-report/` directory. Features include:
+
+- **Real-time updates** - report refreshes during test execution
+- **Screenshots** - inline screenshots for each test
+- **Videos** - embedded video playback with step-level timeline
+- **Traces** - downloadable trace files for debugging
+- **AI-powered RCA** - root cause analysis for failed tests (requires LLM API key)
+- **Flaky test detection** - compares builds to identify flaky tests
+
 ## Test Configuration
 
 Defined in `playwright.config.ts`:
@@ -127,10 +146,11 @@ Defined in `playwright.config.ts`:
 - Timeout: 60s per test, 10s per assertion
 - Fully parallel execution
 - Retries: 2 on CI, 0 locally
-- Screenshots: on failure only
+- Screenshots: always captured
 - Video: always recorded
-- Trace: on first retry
+- Trace: always captured
 - Browser project: Chromium (Desktop Chrome)
+- Custom Reporter: real-time TTA HTML report with screenshots, videos, traces, and AI-powered RCA/flaky analysis
 
 ## Continuous Integration
 
