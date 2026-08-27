@@ -1,6 +1,6 @@
 /**
  * Custom TTA Reporter for Playwright
- * @author Pramod Dutta
+ * @author Bibhu
  * @website https://thetestingacademy.com
  * @version 1.0.0
  * @description Custom HTML Reporter for Playwright Test Automation Framework
@@ -840,10 +840,6 @@ class CustomTTAReporter implements Reporter {
         <span class="modal-close">&times;</span>
         <img id="modalImage" class="modal-content" src="" alt="Screenshot">
     </div>
-
-    <footer class="report-footer">
-        <p>Built with ❤️ by <a href="https://thetestingacademy.com" target="_blank">Pramod Dutta</a> | <a href="https://thetestingacademy.com" target="_blank">The Testing Academy</a></p>
-    </footer>
 
     <script>
         ${this.getScripts()}
@@ -2069,29 +2065,6 @@ class CustomTTAReporter implements Reporter {
         .modal-close:hover {
             color: var(--primary-light);
             transform: scale(1.1);
-        }
-
-        /* ========== FOOTER ========== */
-        .report-footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--gray-700) 100%);
-            color: white;
-            margin-top: 40px;
-        }
-        .report-footer p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .report-footer a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        .report-footer a:hover {
-            color: white;
-            text-decoration: underline;
         }
 
         /* ========== RESPONSIVE ========== */

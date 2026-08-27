@@ -39,7 +39,10 @@ export class LoginPage extends BasePage {
         this.log.info(`loginAs ${username}`);
         await this.el.fill(this.usernameInput, username);
         await this.el.fill(this.passwordInput, password);
-        await this.el.click(this.loginButton);
+        await Promise.all([
+            this.page.waitForURL(/inventory/),
+            this.el.click(this.loginButton),
+        ]);
     }
 
 

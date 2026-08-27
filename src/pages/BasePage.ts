@@ -25,7 +25,6 @@ export abstract class BasePage {
         this.log = createLogger(scope);
     }
     protected async goto(relativePath: string): Promise<void> {
-        await this.page.goto(relativePath);
-        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.goto(relativePath, { waitUntil: 'domcontentloaded' });
     }
 }
