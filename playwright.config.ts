@@ -59,6 +59,13 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome']
       }
+    },
+    {
+      name: 'api',
+      testDir: './src/api',
+      use: {
+        baseURL: resolveBaseURL()
+      }
     }
   ]
 });

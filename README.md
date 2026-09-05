@@ -24,7 +24,7 @@ A TypeScript test automation framework built on [Playwright](https://playwright.
 ├── rules/                 # Project/test rules and conventions
 ├── src/
 │   ├── ai/                # AI agents (RCA, Flaky Analyzer)
-│   ├── api/               # API clients / request helpers
+│   ├── api/               # API test specs and request helpers
 │   ├── config/            # Environment and framework configuration
 │   ├── fixtures/          # Custom Playwright fixtures
 │   ├── pages/             # Page Object Model classes
@@ -97,6 +97,18 @@ Run the full suite:
 npx playwright test
 ```
 
+Run only the API tests:
+
+```bash
+npx playwright test --project=api
+```
+
+Run only the browser (UI) tests:
+
+```bash
+npx playwright test --project=chromium
+```
+
 Run a specific test file:
 
 ```bash
@@ -142,7 +154,9 @@ The framework includes a custom Playwright reporter (`src/utils/CustomReporter.t
 
 Defined in `playwright.config.ts`:
 
-- Test directory: `src/tests`
+- Test directories:
+  - `chromium` project: `src/tests` (UI/browser tests)
+  - `api` project: `src/api` (API tests)
 - Timeout: 60s per test, 10s per assertion
 - Fully parallel execution
 - Retries: 2 on CI, 0 locally

@@ -16,3 +16,13 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Custom TTA reporter artifacts
+/tta-report/
+
+# Logs and reports
+/logs/
+/reports/
+
+# macOS
+.DS_Store
